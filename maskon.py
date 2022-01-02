@@ -4,7 +4,7 @@ import re
 import random
 import platform
 import uuid
-#test
+
 def get_args():
     # Create the parser
     parser = argparse.ArgumentParser()
