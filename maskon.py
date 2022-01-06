@@ -20,12 +20,12 @@ def os_detection():
     return my_os
     
 #Randomize new mac address
-def new_mac(mac):
+def new_mac():
     new_mac = "02:00:00:%02x:%02x:%02x" % (random.randint(0, 255), random.randint(0, 255),random.randint(0, 255))
     return new_mac
 
 #Get Current mac to compare
-def get_current_mac_unix(interface):
+def get_current_mac_unix(interface: str):
   output = sub.check_output(['ifconfig', interface], universal_newlines = True)
   search_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", output)
   if search_mac:
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         
     else:
         mac = get_current_mac_unix(interface)
-        new_mac = new_mac(mac) 
+        new_mac = new_mac(mac)
         maskon_unix(interface, new_mac)
 
         if mac != new_mac:
